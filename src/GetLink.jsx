@@ -10,6 +10,10 @@ const GetLink = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isSignInWithEmailLink(auth, window.location.href)) {
+      /* should probably be encrypting both the email 
+      and the window.location.href in some way, not sure if there
+      is a secure way to do this, would obviously include using 
+      firebase functions to do the encrypt/decrypt */
       setDoc(doc(db, "tokens", email), { token: window.location.href }).then(
         () => {
           setCompleted(true);
